@@ -20,15 +20,15 @@ As propriedades e tipos de valores para cada propriedade desse objeto devem ser:
 */
 
 var pessoa = {
-... nome : 'Danilo',
-... sobrenome : 'Carrara',
-... sexo : 'Masculino',
-... idade : 28,
-... altura : 1.87,
-... peso : 92,
-... andando : false,
-... caminhouQuantosMetros : 0,
-... }
+ nome : 'Danilo',
+ sobrenome : 'Carrara',
+ sexo : 'Masculino',
+ idade : 28,
+ altura : 1.87,
+ peso : 92,
+ andando : false,
+ caminhouQuantosMetros : 0,
+ }
 
 /*
 Adicione um método ao objeto `pessoa` chamado `fazerAniversario`. O método deve
@@ -37,7 +37,7 @@ for chamado.
 */
 
 pessoa.fazerAniversario = function fazerAniversario () {
-    pessoa.idades += 1;
+    pessoa.idade += 1;
 }
 
 /*
@@ -51,7 +51,7 @@ valor dessa propriedade a quantidade passada por parâmetro;
 booleano que representa "verdadeiro";
 */
 
-function andar (metros) {
+pessoa.andar = function andar (metros) {
 
     pessoa.andando = true;
     pessoa.caminhouQuantosMetros += metros;
@@ -89,79 +89,131 @@ pessoa.mostrarIdade = function mostrarIdade(){
 Crie um método chamado `mostrarPeso`, que retorne a frase:
 - "Eu peso [PESO]Kg."
 */
-?
+
+pessoa.mostrarPeso = function mostrarPeso() {
+    return `Eu peso ${pessoa.peso}Kg`;
+}
+
 
 /*
 Crie um método chamado `mostrarAltura` que retorne a frase:
 - "Minha altura é [ALTURA]m."
 */
-?
+
+pessoa.mostrarAltura = function mostrarAltura () {
+    return `Minha altura é ${pessoa.altura}`;
+}
 
 /*
 Agora vamos brincar um pouco com o objeto criado:
 Qual o nome completo da pessoa? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-?
+
+pessoa.nomeCompleto();
+//Olá! Meu nome é Danilo Carrara
+
 
 /*
 Qual a idade da pessoa? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-?
+
+pessoa.mostrarIdade();
+//Olá, eu tenho 28 anos!
 
 /*
 Qual o peso da pessoa? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-?
+
+pessoa.mostrarPeso()
+//'Eu peso 92Kg'
 
 /*
 Qual a altura da pessoa? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-?
+
+pessoa.mostrarAltura();
+//'Minha altura é 1.87'
 
 /*
 Faça a `pessoa` fazer 3 aniversários.
 */
-?
+
+> pessoa.fazerAniversario();
+> pessoa.mostrarIdade();
+// Olá, eu tenho 29 anos!
+
+> pessoa.fazerAniversario();
+> pessoa.mostrarIdade();
+// Olá, eu tenho 30 anos!
+
+> pessoa.fazerAniversario();
+> pessoa.mostrarIdade();
+// Olá, eu tenho 31 anos!
+
 
 /*
 Quantos anos a `pessoa` tem agora? (Use a instrução para responder e
 comentários inline ao lado da instrução para mostrar qual foi a resposta
 retornada)
 */
-?
+
+> pessoa.fazerAniversario();
+> pessoa.mostrarIdade();
+// Olá, eu tenho 29 anos!
+
+> pessoa.fazerAniversario();
+> pessoa.mostrarIdade();
+// Olá, eu tenho 30 anos!
+
+> pessoa.fazerAniversario();
+> pessoa.mostrarIdade();
+// Olá, eu tenho 31 anos!
+
 
 /*
 Agora, faça a `pessoa` caminhar alguns metros, invocando o método `andar` 3x,
 com metragens diferentes passadas por parâmetro.
 */
-?
+
+> pessoa.andar(10);
+> pessoa.andar(20);
+> pessoa.andar(30);
 
 /*
 A pessoa ainda está andando? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-?
+
+ pessoa.andando;
+// true
+
 
 /*
 Se a pessoa ainda está andando, faça-a parar.
 */
-?
+
+> pessoa.parar();
+
 
 /*
 E agora: a pessoa ainda está andando? (Use uma instrução para responder e
 comentários inline ao lado da instrução para mostrar a resposta retornada)
 */
-?
+
+> pessoa.andando;
+    //false
 
 /*
 Quantos metros a pessoa andou? (Use uma instrução para responder e comentários
 inline ao lado da instrução para mostrar a resposta retornada)
 */
-?
+
+> pessoa.caminhouQuantosMetros;
+60;
 
 /*
 Agora vamos deixar a brincadeira um pouco mais divertida! :D
@@ -180,8 +232,36 @@ deve conter no retorno da frase acima é "metro" no lugar de "metros".
 método), que será concatenada com a frase de retorno, mostrando a resposta
 correta, de acordo com os dados inseridos no objeto.
 */
-?
+
+pessoa.apresentacao = function apresentacao () {
+
+    var sexoDef;
+    var anoDef;
+    var metroDef;
+
+    if (pessoa.sexo == 'Masculino'){
+        sexoDef = 'o';
+    } else if(pessoa.sexo == 'Feminino'){
+        sexoDef = 'a';
+    }
+
+    if (pessoa.idade == 1){
+        anoDef = 'ano';
+    } else if(pessoa.idade > 1 ){
+        anoDef = 'anos';
+    }
+
+    if (pessoa.caminhouQuantosMetros == 1){
+        metroDef = 'metro';
+    } else if(pessoa.caminhouQuantosMetros > 1 ){
+        metroDef = 'metros';
+    }
+
+    return `Olá, eu sou ${sexoDef} ${pessoa.nome} ${pessoa.sobrenome}, tenho ${pessoa.idade} ${anoDef}, meu peso é ${pessoa.peso}Kg e , só hoje eu já caminhei ${pessoa.caminhouQuantosMetros} ${metroDef}!`;
+}
 
 // Agora, apresente-se ;)
 ?
 ```
+> pessoa.apresentacao();
+'Olá, eu sou o Danilo Carrara, tenho 31 anos, meu peso é 92 e , só hoje eu já caminhei 10 metros!'
