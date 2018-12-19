@@ -59,7 +59,15 @@ propriedades:
 os livros.
 */
 
+function book (nameParan){
 
+    var objetoDoido = {
+        quantidadePaginas: 1,
+        autor : '',
+        editora : ''
+    }
+
+}
 
 /*
 Usando a função criada acima, imprima o objeto com todos os livros.
