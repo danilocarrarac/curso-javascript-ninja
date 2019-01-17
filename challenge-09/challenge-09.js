@@ -3,6 +3,8 @@ Crie uma IIFE que envolva todo o código desse arquivo. Faça também a
 indentação correta do código, para ficar dentro da IIFE.
 */
 
+(function () {});
+
 /*
 Analise as funções abaixo (`myFunction`, `myFunction2` e `myFunction3`, e
 ajuste o posicionamento das variáveis e funções internas, para que os códigos
@@ -15,7 +17,7 @@ function myFunction() {
         console.log( 'Na função `myFunction`, o primeiro número é', number1 );
         console.log( 'Na função `myFunction`, o segundo número é', number2 );
         return number1 + number2;
-}
+};
 
 myFunction();
 
@@ -29,15 +31,17 @@ function myFunction2() {
     var sum = function sum() {     
         return number1 + number2;
     };
-
     console.log( 'A soma de 10 e 20 é igual a', sum ? sum() : undefined );    
     return sum();
-}
+};
+
 myFunction2();
 
+
 /*
-    myFunction3();
+   myFunction3();
 */
+
 function myFunction3() {
     var number2 = 50;
     var number1 = 40;
@@ -45,12 +49,12 @@ function myFunction3() {
     function sum() {
         return number1 + number2;
     };
-
     console.log( 'A soma de 40 e 50 é igual a', sum() );
     console.log( 'Na função myFunction3, number1 é igual a', number1 );
 
     return sum();
 }
+
 myFunction3();
 
 /*
@@ -68,11 +72,22 @@ que foram passadas para a primeira função `calculator`.
 */
 // ?
 
+
+function calculator (num1, num2) {
+
+    return function (callback){
+        return callback(num1, num2);
+    };
+}
+
+
 /*
 Declare uma variável chamada `sum`, e atribua a ela a função `calculator`,
 passando dois números por parâmetro.
 */
 // ?
+
+var sum = calculator(10,2);
 
 /*
 Sabemos que `sum` agora tem uma função atribuída a ela, que é o retorno de
