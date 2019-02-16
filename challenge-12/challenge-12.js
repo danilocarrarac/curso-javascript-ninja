@@ -112,7 +112,13 @@ no formato abaixo:
 */
 // ?
 
-console.log('Livros no formato ', Object.keys(books) )
+for(var i = 0; i < books.length; i++){
+	for (var prop in books[i]){
+		console.log(prop + ': ' + books[i][prop]);
+	}
+}
+
+console.log('Livros no formato ' )
 
 /*
 Crie um array chamado `myName`. Cada item desse array deve ser uma letra do
@@ -122,12 +128,7 @@ seu nome. Adicione seu nome completo no array.
 
 
 var myName =[];
-myName.push('D');
-myName.push('a');
-myName.push('n');
-myName.push('i');
-myName.push('l');
-myName.push('o');
+myName.push('D','a','n','i','l','o');
 
 
 console.log( '\nMeu nome é:', myName.join(''));
@@ -137,17 +138,17 @@ Juntando todos os itens do array, mostre no console seu nome.
 */
 // ?
 
-console.log( '\nMeu nome invertido é:', myName.reverse('') );
+console.log( '\nMeu nome invertido é:', myName.reverse().join(''));
 
 /*
 Ainda usando o objeto acima, mostre no console seu nome invertido.
 */
 // ?
 
-console.log( '\nAgora em ordem alfabética:' , myName.sort());
+console.log( '\nAgora em ordem alfabética:' , myName.sort().join(''));
 /*
 Mostre todos os itens do array acima, odenados alfabéticamente.
 */
 // ?
 
-})()
+})();
