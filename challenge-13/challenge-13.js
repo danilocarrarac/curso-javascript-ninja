@@ -16,6 +16,10 @@ var array = [1,2,3,4,5,6]
 console.log(JSON.stringify(array));
 
 
+// Na correçao teve uma mais facil
+console.log(array.toString());
+
+
 /*
 Crie 2 arrays `sul` e `sudeste`, que serão as regiões do Brasil.
 Cada array deve conter os estados dessa região.
@@ -43,7 +47,7 @@ Adicione 3 novos estados da região Norte no início do array e mostre no consol
 console.log( '\nMais estados adicionados:' );
 // ?
 
-brasil.unshift('Bahia','Ceará', 'Sergipe');
+brasil.unshift('Acre','Amapa', 'Amazonas');
 
 console.log(brasil);
 
@@ -81,7 +85,14 @@ console.log(brasil);
 Crie um novo array chamado `nordeste`, que tenha os estados do nordeste.
 */
 
-var nordeste = ['Bahia', 'Piauí', 'Pernambuco', 'Paraíba', 'Rio Grande do Norte', 'Maranhão', 'Ceará']
+var nordeste = ['Bahia', 
+'Piauí',
+ 'Pernambuco',
+  'Paraíba',
+   'Rio Grande do Norte',
+    'Maranhão',
+     'Ceará']
+
 
 /*
 Mostre no console os estados do nordeste.
@@ -108,8 +119,10 @@ ficar no mesmo nível que os estados já existentes, não em um array separado.
 */
 // ?
 
-('Exercicio da linha 110 deu ruim');
+// PRA MANTER A PORRA DO ARRAY NO MESMO NIVEL BASTA USAR O MÉTODO CONCAT Ex:
 
+ 	brasil.concat(nordeste);
+ 	console.log('\n Estados do Brasil atualizado: ', brasil);
 /*
 Mostre no console os estados em `newSudeste`.
 */
@@ -132,12 +145,21 @@ propriedades:
 - `id`: que será o índice do array `brasil`,
 - `estado`: que será o estado do array `brasil`.
 */
-// ?
+
+var newBrasil = [];
+
+brasil.forEach(function(item, index, array){
+
+newBrasil.push({
+	id: index,
+	estado: item
+	})
+});
 
 /*
 Mostre o array `newBrasil` no console
 */
-console.log( '\nnewBrasil:' );
+console.log( '\nnewBrasil: \n\n', newBrasil );
 // ?
 
 /*
@@ -148,8 +170,14 @@ Senão, mostre no console:
 - "Nem todos os estados tem mais de 7 letras!"
 */
 console.log( '\nTodos os estados de `brasil` tem mais de 7 letras?' );
-// ?
 
+
+var every = brasil.every(function(item){
+
+	return item.length > 7;
+});
+
+console.log(every ? "Sim, todos os estados tem mais de 7 letras!" :"Nem todos os estados tem mais de 7 letras!" )
 /*
 Percorra o array `brasil` e verifique se o Ceará está incluído, atribuindo o
 resultado à uma variável. Se esse estado existir no array, mostrar a frase no
@@ -159,7 +187,12 @@ Senão, mostrar a frase:
 - "Ceará não foi incluído :("
 */
 console.log( '\nCeará está incluído em `brasil`?' );
-// ?
+
+var ceara = brasil.some(function(item){
+	return item === "Ceará";
+});
+
+console.log(ceara ? "Ceará está incluído!" : "Ceará não foi incluído :(");
 
 /*
 Percorra o array `newBrasil` e crie um novo array que some 1 no ID de cada
@@ -167,7 +200,8 @@ objeto desse array, e adicione a frase abaixo na propriedade `estado`:
 - "[ESTADO] pertence ao Brasil."
 Atribua o novo array a uma variável chamada `map`.
 */
-// ?
+
+
 
 /*
 Mostre no console o array criado acima:
